@@ -1,6 +1,10 @@
 # Extended Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
 
+![EKF GIF][image6]
+
+[image6]: ./Docs/EKF.gif "EKF Image"
+
 In this project you will utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. Passing the project requires obtaining RMSE values that are lower than the tolerance outlined in the project rubric. 
 
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases).
@@ -129,6 +133,20 @@ and how to install it.
 Regardless of the IDE used, every submitted project must
 still be compilable with cmake and make.
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### Overview of a Kalman Filter: Initialize, Predict, Update
+
+To review what we learned in the extended Kalman filter lectures, let's discuss the three main steps for programming a Kalman filter:
+
+-   **initializing**  Kalman filter variables
+-   **predicting**  where our object is going to be after a time step  \Delta{t}Δt
+-   **updating**  where our object is based on sensor measurements
+
+
+### How the Files Relate to Each Other
+
+Here is a brief overview of what happens when you run the code files:
+
+1.  `Main.cpp`  reads in the data and sends a sensor measurement to  `FusionEKF.cpp`
+2.  `FusionEKF.cpp`  takes the sensor data and initializes variables and updates variables. The Kalman filter equations are not in this file.  `FusionEKF.cpp`  has a variable called  `ekf_`, which is an instance of a  `KalmanFilter`  class. The  `ekf_`  will hold the matrix and vector values. You will also use the  `ekf_`  instance to call the predict and update equations.
+3.  The  `KalmanFilter`  class is defined in  `kalman_filter.cpp`  and  `kalman_filter.h`. You will only need to modify 'kalman_filter.cpp', which contains functions for the prediction and update steps.
 
